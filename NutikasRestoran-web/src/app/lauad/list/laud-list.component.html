@@ -1,0 +1,25 @@
+<h3>Saaliplaan</h3>
+
+<div id="tsoonid">
+<div class="külgBox">
+
+    <div class="grid-peaSaal">
+        @for (laud of lauadSaal(); track laud.id) {
+        <div class="grid-elem"> {{laud.id}} </div>
+        }
+    </div>
+    <div class="grid-terass">
+        @for (laud of lauadTerass(); track laud.id) {
+        <div class="grid-elem"> {{laud.id}} </div>
+        }
+    </div>
+
+</div>
+
+<div class="grid-privaatRuum">
+    @for (laud of lauadPrivaatne(); track laud.id) {
+    <div class="grid-elem"> {{laud.id}} </div>
+    }
+</div>
+
+</div>

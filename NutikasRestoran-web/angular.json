@@ -4,6 +4,7 @@
   "cli": {
     "packageManager": "npm"
   },
+  
   "newProjectRoot": "projects",
   "projects": {
     "NutikasRestoran-web": {

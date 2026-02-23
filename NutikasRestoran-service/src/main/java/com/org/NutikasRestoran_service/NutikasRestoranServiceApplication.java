@@ -1,4 +1,4 @@
-package com.cgi.NutikasRestoran_service;
+package com.org.NutikasRestoran_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

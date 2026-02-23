@@ -1,0 +1,36 @@
+.külgBox {
+  display: flex;
+  width: 100%;
+}
+
+.grid-peaSaal {
+  display: grid;
+  grid-template-columns: repeat(3, 11.11vh);
+  grid-template-rows: repeat(3, 11.11vh);
+  padding: 10px;
+}
+
+.grid-terass {
+  display: grid;
+  grid-template-columns: repeat(3, 11.11vh);
+  grid-template-rows: repeat(3, 11.11vh);
+  padding: 10px;
+}
+
+.grid-privaatRuum {
+  display: grid;
+  grid-template-columns: repeat(3, 11.11vh);
+  grid-template-rows: repeat(3, 11.11vh);
+  padding: 10px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grid-elem {
+  background-color: #f1f1f1;
+  border: 1px solid black;
+  padding: 10px;
+  font-size: 30px;
+  text-align: center;
+}
