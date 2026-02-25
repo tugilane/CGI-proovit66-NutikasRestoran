@@ -10,14 +10,14 @@ import java.util.List;
 @RestController
 public class LaudController {
 
-    private final LaudRepository laudRepository;
+    private final LaudService laudService;
 
-    LaudController(LaudRepository laudRepository, LaudService laudService) {
-        this.laudRepository = laudRepository;
+    LaudController(LaudService laudService) {
+        this.laudService = laudService;
     }
 
     @GetMapping("/lauad")
-    public List<Laud> getLauadList(){
-        return laudRepository.findAll();
+    public String[] getLauadList(){
+        return laudService.looKõigiLaudadeDTOd(laudService.koikLauad());
     }
 }

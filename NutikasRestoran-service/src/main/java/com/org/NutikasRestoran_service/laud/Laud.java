@@ -1,19 +1,48 @@
 package com.org.NutikasRestoran_service.laud;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import com.org.NutikasRestoran_service.broneering.Broneering;
+import jakarta.persistence.*;
+import tools.jackson.databind.ObjectMapper;
+
+import java.util.Arrays;
+import java.util.List;
 
 @Entity
+@Table
 public class Laud {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
-    private String bronnitud; // timestamp
+
+    @OneToMany (fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn
+    private List<Broneering> bronnitud;
+
+    @Column
     private int privaatne;
+
+    @Column
     private int aknaKoht;
+
+    @Column
     private int ligipääsetavus;
+
+    @Column
     private int inimesteArv;
+
+    @Column
     private String tsoon;
+
+    public Laud(long id, List<Broneering> bronnitud, int privaatne, int aknaKoht, int ligipääsetavus, int inimesteArv, String tsoon) {
+        this.id = id;
+        this.bronnitud = bronnitud;
+        this.privaatne = privaatne;
+        this.aknaKoht = aknaKoht;
+        this.ligipääsetavus = ligipääsetavus;
+        this.inimesteArv = inimesteArv;
+        this.tsoon = tsoon;
+    }
 
     public Laud(){}
 
@@ -25,11 +54,11 @@ public class Laud {
         this.id = id;
     }
 
-    public String getBronnitud() {
+    public List<Broneering> getBronnitud() {
         return bronnitud;
     }
 
-    public void setBronnitud(String bronnitud) {
+    public void setBronnitud(List<Broneering> bronnitud) {
         this.bronnitud = bronnitud;
     }
 
@@ -73,13 +102,4 @@ public class Laud {
         this.tsoon = tsoon;
     }
 
-    public Laud(long id, String bronnitud, int privaatne, int aknaKoht, int ligipääsetavus, int inimesteArv, String tsoon) {
-        this.id = id;
-        this.bronnitud = bronnitud;
-        this.privaatne = privaatne;
-        this.aknaKoht = aknaKoht;
-        this.ligipääsetavus = ligipääsetavus;
-        this.inimesteArv = inimesteArv;
-        this.tsoon = tsoon;
-    }
 }

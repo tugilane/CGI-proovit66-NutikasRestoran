@@ -21,7 +21,7 @@ export class laudListComponent implements OnInit{
 
                 let saal = <Array<Laud>>([]);
                 let terass = <Array<Laud>>([]);
-                let privaatRuum = <Array<Laud>>([]);
+                let privaatneRuum = <Array<Laud>>([]);
             
             lauadData.forEach(laudElement => { // algul paneme arrayde sisse 
                 switch(laudElement.tsoon){
@@ -31,13 +31,15 @@ export class laudListComponent implements OnInit{
                     case 'terass':
                         terass.push(laudElement)
                     break;
-                    case 'privaatRuum':
-                        privaatRuum.push(laudElement)
+                    case 'privaatneRuum':
+                        privaatneRuum.push(laudElement)
                     break;
                 }
                 this.lauadSaal.set(saal) // ja siis teeme signalid
                 this.lauadTerass.set(terass)
-                this.lauadPrivaatne.set(privaatRuum)
+                this.lauadPrivaatne.set(privaatneRuum)
+
+                console.log(lauadData)
             });
         })
     }
