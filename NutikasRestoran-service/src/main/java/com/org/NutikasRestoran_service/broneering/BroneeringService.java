@@ -38,10 +38,10 @@ public class BroneeringService {
         );
     }
 
-    public BroneeringDTO[] looBroneeringDTOdLauaPõhjal(Laud laud){
-        BroneeringDTO[] lauaBroneeringDTOd = new BroneeringDTO[laud.getBronnitud().size()];
-        for (int i = 0; i < lauaBroneeringDTOd.length; i++) {
-            lauaBroneeringDTOd[i] = looBroneeringDTO(laud.getBronnitud().get(i));
+    public List<BroneeringDTO> looBroneeringDTOdLauaPõhjal(Laud laud){
+        List<BroneeringDTO> lauaBroneeringDTOd = new java.util.ArrayList<>();
+        for (Broneering broneering : laud.getBronnitud()) {
+            lauaBroneeringDTOd.add(looBroneeringDTO(broneering));
         }
         return lauaBroneeringDTOd;
     }

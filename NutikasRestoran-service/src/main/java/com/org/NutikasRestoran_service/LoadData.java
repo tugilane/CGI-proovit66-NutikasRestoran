@@ -4,6 +4,8 @@ import com.org.NutikasRestoran_service.broneering.Broneering;
 import com.org.NutikasRestoran_service.broneering.BroneeringService;
 import com.org.NutikasRestoran_service.laud.Laud;
 import com.org.NutikasRestoran_service.laud.LaudService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +21,7 @@ public class LoadData {
 
         private final LaudService laudService;
         private final BroneeringService broneeringService;
+        private static final Logger log = LogManager.getLogger(LoadData.class);
 
         LoadData(LaudService laudService, BroneeringService broneeringService){
             this.laudService = laudService;
@@ -97,17 +100,6 @@ public class LoadData {
             laudService.lisaBroneeringList(laudService.valiLaud(i+1).get(),broneeringuteListid.get(i));
         }
 
-        for (Laud laud : laudService.koikLauad()) {
-            System.out.print(laud.getId() + " ");
-            for (String[] strings : laudService.bronnidToStringMaatriks(laud)) {
-                System.out.print("[");
-                for (String string : strings) {
-                    System.out.print(string + ", ");
-                }
-                System.out.print("]");
-            }
-        System.out.println(laud.getPrivaatne() + " " + laud.getAknaKoht() + " " + laud.getLigipääsetavus() + " " + laud.getInimesteArv() + " " + laud.getTsoon());
-        }
-
+        log.info("Esmased lauad ja broneeringud genereeritud. Lauade arv: {}, Broneeringute arv: {}", laudasidKokku, broneeringuLoendur);
     }
 }

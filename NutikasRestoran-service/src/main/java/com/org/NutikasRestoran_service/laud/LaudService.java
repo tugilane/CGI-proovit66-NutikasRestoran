@@ -5,7 +5,9 @@ import com.org.NutikasRestoran_service.broneering.BroneeringDTO;
 import com.org.NutikasRestoran_service.broneering.BroneeringService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tools.jackson.databind.ObjectMapper;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -62,11 +64,11 @@ public class LaudService {
         );
     }
 
-    public String[] looKõigiLaudadeDTOd(List<Laud> laudadeList) {
-        String[] koigiLaudadeDTOd = new String[laudadeList.size()];
-        for (int i = 0; i < laudadeList.size(); i++) {
-            LaudDTO laudDTO = looLaudDTO(laudadeList.get(i));
-            koigiLaudadeDTOd[i] = laudDTO.toString();
+    public List<LaudDTO> looKõikLaudDTOd(List<Laud> lauadList) {
+        List<LaudDTO> koigiLaudadeDTOd = new ArrayList<>();
+        for (Laud laud : lauadList) {
+            LaudDTO laudDTO = looLaudDTO(laud);
+            koigiLaudadeDTOd.add(laudDTO);
         }
         return koigiLaudadeDTOd;
     }
@@ -86,6 +88,8 @@ public class LaudService {
         }
     }
 
-
-
+    public String looJson(List<LaudDTO> laudadeDTOd) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.writeValueAsString(laudadeDTOd);
+        }
 }

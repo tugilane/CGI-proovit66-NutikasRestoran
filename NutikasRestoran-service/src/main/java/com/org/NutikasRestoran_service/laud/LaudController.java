@@ -17,7 +17,9 @@ public class LaudController {
     }
 
     @GetMapping("/lauad")
-    public String[] getLauadList(){
-        return laudService.looKõigiLaudadeDTOd(laudService.koikLauad());
+    public String getLauadList(){
+        String vastus = laudService.looJson(laudService.looKõikLaudDTOd(laudService.koikLauad()));
+        System.out.println(vastus);
+        return vastus;
     }
 }
