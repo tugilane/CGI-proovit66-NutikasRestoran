@@ -32,22 +32,36 @@ public class LoadData {
             return (int) ((Math.random() * (max - min)) + min);
     }
 
+    public static boolean getBoolean(int value) {return (value!=0);}
+
         public void laeLauad(LaudService laudService) { // genereerin laudade andmed
 
             int peaSaaliLaudu = 9; // siin vali mitu lauda saalis olla võiks
             int terrassiLaudu = 6; // siin vali mitu lauda terrassil olla võiks
             int privaatseidLaudu = 3; // siin vali mitu lauda privaatsetes ruumides olla võiks
 
+            boolean aknaKoht;
             for (long i = 0; i < peaSaaliLaudu; i++) {
-                laudService.save(new Laud(0,null, getRandomNumber(0, 2), getRandomNumber(0, 2), getRandomNumber(0, 2), getRandomNumber(2, 5), "saal"));
+
+                if (i / 3 < 0.5){ // peasaali aknakohad on saali vasakus servas
+                    aknaKoht = true;
+                } else {
+                    aknaKoht = false;
+                }
+                laudService.save(new Laud(0,null, aknaKoht, getBoolean(getRandomNumber(0, 2)), getBoolean(getRandomNumber(0, 2)), getRandomNumber(2, 5), "saal"));
             }
 
             for (int i = 0; i < terrassiLaudu; i++) {
-                laudService.save(new Laud(0,null, getRandomNumber(0, 2), getRandomNumber(0, 2), getRandomNumber(0, 2), getRandomNumber(2, 7), "terass"));
+                laudService.save(new Laud(0,null, getBoolean(getRandomNumber(0, 2)), getBoolean(getRandomNumber(0, 2)), getBoolean(getRandomNumber(0, 2)), getRandomNumber(2, 7), "terass"));
             }
 
-            for (int i = 0; i < privaatseidLaudu; i++) {
-                laudService.save(new Laud(0,null, 1, getRandomNumber(0, 2), getRandomNumber(0, 2), getRandomNumber(2, 11), "privaatneRuum"));
+            for (int i = 0; i < privaatseidLaudu; i++) { // igal teisel privaatsel laual on aken
+                if (i % 2 == 0){
+                    aknaKoht = true;
+                } else {
+                    aknaKoht = false;
+                }
+                laudService.save(new Laud(0,null, true, aknaKoht, getBoolean(getRandomNumber(0, 2)), getRandomNumber(2, 11), "privaatneRuum"));
             }
         }
 
@@ -73,7 +87,7 @@ public class LoadData {
             Optional<Laud> laudKuhuLisanBronni = laudService.valiLaud(lauaLoendur);
             int loos = getRandomNumber(0, 3); // toimub loos, "kas teeme broneeringu sellele kellajale"
             if (laudKuhuLisanBronni.isPresent() && loos > 0) { // kui laud eksisteerib ja loosimine õnnestub siis broneerin laua. loos on hetkel seatud 2/3 tõenäosusega
-                Broneering uusBronn = new Broneering(0, laudKuhuLisanBronni.get(), "Kylaline", aeg.toString());
+                Broneering uusBronn = new Broneering(0, laudKuhuLisanBronni.get(), "Kylaline", aeg);
                 broneeringService.save(uusBronn);
                 broneeringuteListid.get(lauaLoendur-1).add(uusBronn);
 
@@ -92,8 +106,6 @@ public class LoadData {
                 System.out.println("Broneeringu id: " + broneering.getId() + " Broneeringu aeg: " + broneering.getAeg() + " Broneeringu laud: " + broneering.getLaud().getId());
             }
             broneeringuLoendur++;
-
-
         }
 
         for (int i = 0; i < laudasidKokku; i++) { // nüüd lisame kõik broneeringud laudadele
@@ -101,5 +113,6 @@ public class LoadData {
         }
 
         log.info("Esmased lauad ja broneeringud genereeritud. Lauade arv: {}, Broneeringute arv: {}", laudasidKokku, broneeringuLoendur);
-    }
+        log.info("Andmed valmis");
+        }
 }

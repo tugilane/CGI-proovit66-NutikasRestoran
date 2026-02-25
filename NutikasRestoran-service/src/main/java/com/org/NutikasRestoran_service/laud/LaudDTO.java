@@ -9,13 +9,13 @@ import java.util.List;
 public class LaudDTO{
     private long id;
     private List<BroneeringDTO> bronnitud;
-    private int privaatne;
-    private int aknaKoht;
-    private int ligipääsetavus;
-    private int inimesteArv;
+    private boolean privaatne;
+    private boolean aknaKoht;
+    private boolean ligipääsetavus;
+    private long inimesteArv;
     private String tsoon;
 
-    public LaudDTO(long id, List<BroneeringDTO> bronnitud, int privaatne, int aknaKoht, int ligipääsetavus, int inimesteArv, String tsoon) {
+    public LaudDTO(long id, List<BroneeringDTO> bronnitud, boolean privaatne, boolean aknaKoht, boolean ligipääsetavus, long inimesteArv, String tsoon) {
         this.id = id;
         this.bronnitud = bronnitud;
         this.privaatne = privaatne;
@@ -41,31 +41,31 @@ public class LaudDTO{
         this.bronnitud = bronnitud;
     }
 
-    public int getPrivaatne() {
+    public boolean getPrivaatne() {
         return privaatne;
     }
 
-    public void setPrivaatne(int privaatne) {
+    public void setPrivaatne(boolean privaatne) {
         this.privaatne = privaatne;
     }
 
-    public int getAknaKoht() {
+    public boolean getAknaKoht() {
         return aknaKoht;
     }
 
-    public void setAknaKoht(int aknaKoht) {
+    public void setAknaKoht(boolean aknaKoht) {
         this.aknaKoht = aknaKoht;
     }
 
-    public int getLigipääsetavus() {
+    public boolean getLigipääsetavus() {
         return ligipääsetavus;
     }
 
-    public void setLigipääsetavus(int ligipääsetavus) {
+    public void setLigipääsetavus(boolean ligipääsetavus) {
         this.ligipääsetavus = ligipääsetavus;
     }
 
-    public int getInimesteArv() {
+    public long getInimesteArv() {
         return inimesteArv;
     }
 

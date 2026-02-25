@@ -20,21 +20,21 @@ public class Laud {
     private List<Broneering> bronnitud;
 
     @Column
-    private int privaatne;
+    private boolean privaatne;
 
     @Column
-    private int aknaKoht;
+    private boolean aknaKoht;
 
     @Column
-    private int ligipääsetavus;
+    private boolean ligipääsetavus;
 
     @Column
-    private int inimesteArv;
+    private long inimesteArv;
 
     @Column
     private String tsoon;
 
-    public Laud(long id, List<Broneering> bronnitud, int privaatne, int aknaKoht, int ligipääsetavus, int inimesteArv, String tsoon) {
+    public Laud(long id, List<Broneering> bronnitud, boolean privaatne, boolean aknaKoht, boolean ligipääsetavus, long inimesteArv, String tsoon) {
         this.id = id;
         this.bronnitud = bronnitud;
         this.privaatne = privaatne;
@@ -62,31 +62,29 @@ public class Laud {
         this.bronnitud = bronnitud;
     }
 
-    public int getPrivaatne() {
-        return privaatne;
-    }
+    public boolean getPrivaatne() {return privaatne;}
 
-    public void setPrivaatne(int privaatne) {
+    public void setPrivaatne(boolean privaatne) {
         this.privaatne = privaatne;
     }
 
-    public int getAknaKoht() {
+    public boolean getAknaKoht() {
         return aknaKoht;
     }
 
-    public void setAknaKoht(int aknaKoht) {
+    public void setAknaKoht(boolean aknaKoht) {
         this.aknaKoht = aknaKoht;
     }
 
-    public int getLigipääsetavus() {
+    public boolean getLigipääsetavus() {
         return ligipääsetavus;
     }
 
-    public void setLigipääsetavus(int ligipääsetavus) {
+    public void setLigipääsetavus(boolean ligipääsetavus) {
         this.ligipääsetavus = ligipääsetavus;
     }
 
-    public int getInimesteArv() {
+    public long getInimesteArv() {
         return inimesteArv;
     }
 

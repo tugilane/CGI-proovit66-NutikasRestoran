@@ -3,6 +3,8 @@ package com.org.NutikasRestoran_service.broneering;
 import com.org.NutikasRestoran_service.laud.Laud;
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table
 public class Broneering {
@@ -19,9 +21,9 @@ public class Broneering {
         private String nimi;
 
         @Column
-        private String aeg;
+        private LocalDateTime aeg;
 
-    public Broneering(long id, Laud laud, String nimi, String aeg) {
+    public Broneering(long id, Laud laud, String nimi, LocalDateTime aeg) {
         this.id = id;
         this.laud = laud;
         this.nimi = nimi;
@@ -55,11 +57,11 @@ public class Broneering {
             this.laud = laud;
         }
 
-        public String getAeg() {
+        public LocalDateTime getAeg() {
             return aeg;
         }
 
-        public void setAeg(String aeg) {
+        public void setAeg(LocalDateTime aeg) {
             this.aeg = aeg;
         }
 }

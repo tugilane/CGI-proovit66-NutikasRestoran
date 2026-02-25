@@ -1,13 +1,15 @@
 package com.org.NutikasRestoran_service.broneering;
 
+import java.time.LocalDateTime;
+
 public class BroneeringDTO {
 
     private long id;
     private long laud;
     private String nimi;
-    private String aeg;
+    private LocalDateTime aeg;
 
-    public BroneeringDTO(long id, long laud, String nimi, String aeg) {
+    public BroneeringDTO(long id, long laud, String nimi, LocalDateTime aeg) {
         this.id = id;
         this.laud = laud;
         this.nimi = nimi;
@@ -38,11 +40,11 @@ public class BroneeringDTO {
         this.nimi = nimi;
     }
 
-    public String getAeg() {
+    public LocalDateTime getAeg() {
         return aeg;
     }
 
-    public void setAeg(String aeg) {
+    public void setAeg(LocalDateTime aeg) {
         this.aeg = aeg;
     }
 }

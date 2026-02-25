@@ -80,7 +80,7 @@ public class LaudService {
                 bronnidMaatriks[i][0] = String.valueOf(laud.getBronnitud().get(i).getId());
                 bronnidMaatriks[i][1] = String.valueOf(laud.getBronnitud().get(i).getLaud().getId());
                 bronnidMaatriks[i][2] = laud.getBronnitud().get(i).getNimi();
-                bronnidMaatriks[i][3] = laud.getBronnitud().get(i).getAeg();
+                bronnidMaatriks[i][3] = laud.getBronnitud().get(i).getAeg().toString();
             }
             return bronnidMaatriks;
         } else {
