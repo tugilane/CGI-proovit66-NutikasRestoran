@@ -1,3 +1,37 @@
 #paneel {
-    background-color: grey;
+    background-color: rgb(190, 190, 190);
+    height: auto;
+    border-radius: 25px;
+    width: 100%;
+
+}
+
+#pealkiri{
+    text-align: center;
+    margin: 0;
+    padding-top: 1%;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+#valikudParent {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    padding: 15px;
+    justify-content:center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#kellaaeg {
+    margin-left: 30px;
+
+}
+
+.checkBox {
+    display: flex;
+    margin-left: 30px
 }

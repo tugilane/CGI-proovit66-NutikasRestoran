@@ -1,3 +1,75 @@
 <div id="paneel">
-    <h3>ma olen otsinguPaneel</h3>
+
+    <h2 id="pealkiri">Vali sobiv aeg</h2>
+
+    <div id="valikudParent">
+
+        <div id="kuupäev">
+        <select name="aasta" id="">
+            <option value="">{{ this.aasta0.toString() }}</option>
+            @if ( this.kuu > 8){
+                <option value=""> {{ this.aasta1.toString() }} </option>
+            }
+
+        </select>
+        <select name="kuu" id="">
+            <option value=""> {{ this.kuu0 }}</option>
+            <option value=""> {{ this.kuu1 }} </option>
+            <option value=""> {{ this.kuu2 }} </option>
+            <option value=""> {{ this.kuu3 }} </option>
+
+        </select>
+        </div>
+
+
+        <div id="kellaaeg">
+            <select name="minutid" id="">
+                <option value="hh">hh</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+            </select>
+            :
+            <select name="minutid" id="">
+                <option value="mm">mm</option>
+                <option value="00">00</option>
+                <option value="00">05</option>
+                <option value="00">10</option>
+                <option value="00">15</option>
+                <option value="00">20</option>
+                <option value="00">25</option>
+                <option value="00">30</option>
+                <option value="00">35</option>
+                <option value="00">40</option>
+                <option value="00">45</option>
+                <option value="00">50</option>
+                <option value="00">55</option>
+            </select>
+        </div>
+
+        <div class="checkBox">
+            <p>akna kõrval</p>
+            <input type="checkbox" name="" id="" value="">
+        </div>
+        <div class="checkBox">
+            <p>hea ligipääsetavus</p>
+            <input type="checkbox" name="" id="" value="">
+        </div>
+        <div class="checkBox">
+            <p>privaatne tuba</p>
+            <input type="checkbox" name="" id="" value="">
+        </div>
+
+    </div>
+
+    
+
 </div>
