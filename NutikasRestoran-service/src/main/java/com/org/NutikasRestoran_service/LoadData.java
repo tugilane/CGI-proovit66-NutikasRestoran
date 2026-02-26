@@ -40,28 +40,44 @@ public class LoadData {
             int terrassiLaudu = 6; // siin vali mitu lauda terrassil olla võiks
             int privaatseidLaudu = 3; // siin vali mitu lauda privaatsetes ruumides olla võiks
 
+            int laud = 0;
             boolean aknaKoht;
+            boolean ligipääseatav;
             for (long i = 0; i < peaSaaliLaudu; i++) {
 
-                if (i / 3 < 0.5){ // peasaali aknakohad on saali vasakus servas
+                if (((double) i+1.0) % 3.0 == 1) // peasaali aknakohad on saali vasakus servas
                     aknaKoht = true;
-                } else {
+                else
                     aknaKoht = false;
-                }
-                laudService.save(new Laud(0,null, aknaKoht, getBoolean(getRandomNumber(0, 2)), getBoolean(getRandomNumber(0, 2)), getRandomNumber(2, 5), "saal"));
+
+                laud++;
+                if (((double) i+1.0) % 3 == 2)  // ainult lauad mis on ümbritsetud teiste laudade poolt, ei ole ligipääsetavad
+                    if (i == 1 || i+1 >= peaSaaliLaudu-3) // esimene ja viimane rida laudasid on hästi ligipääsetavad
+                        ligipääseatav = true;
+                    else
+                        ligipääseatav = false;
+                else
+                    ligipääseatav = true;
+
+                laudService.save(new Laud(0,null, false, aknaKoht, ligipääseatav, getRandomNumber(2, 5), "saal"));
             }
 
             for (int i = 0; i < terrassiLaudu; i++) {
-                laudService.save(new Laud(0,null, getBoolean(getRandomNumber(0, 2)), getBoolean(getRandomNumber(0, 2)), getBoolean(getRandomNumber(0, 2)), getRandomNumber(2, 7), "terass"));
+                if (((double) i+1.0) % 3.0 == 1) // maja poolsed lauad on terassil ligipääsetavad
+                    ligipääseatav = true;
+                else
+                    ligipääseatav = false;
+
+                laudService.save(new Laud(0,null, false, false, ligipääseatav, getRandomNumber(2, 7), "terass"));
             }
 
             for (int i = 0; i < privaatseidLaudu; i++) { // igal teisel privaatsel laual on aken
-                if (i % 2 == 0){
+                if (i % 2 == 0)
                     aknaKoht = true;
-                } else {
+                else
                     aknaKoht = false;
-                }
-                laudService.save(new Laud(0,null, true, aknaKoht, getBoolean(getRandomNumber(0, 2)), getRandomNumber(2, 11), "privaatneRuum"));
+
+                laudService.save(new Laud(0,null, true, aknaKoht, true, getRandomNumber(2, 11), "privaatneRuum"));
             }
         }
 
