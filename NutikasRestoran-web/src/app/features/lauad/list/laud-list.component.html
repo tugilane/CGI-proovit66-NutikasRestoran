@@ -1,25 +1,32 @@
-<h3>Saaliplaan</h3>
-
 <div id="tsoonid">
-<div class="külgBox">
+<div class="peamised">
 
+    <div>
+        <h4>Peasaal</h4>
     <div class="grid-peaSaal">
         @for (laud of lauadSaal(); track laud.id) {
         <div class="grid-elem"> {{laud.id}} </div>
         }
     </div>
+    </div>
+    <div>
+        <h4>Terass</h4>
     <div class="grid-terass">
         @for (laud of lauadTerass(); track laud.id) {
         <div class="grid-elem"> {{laud.id}} </div>
         }
     </div>
+    </div>
 
 </div>
 
+<div>
+    <h4>Privaatsed ruumid</h4>
 <div class="grid-privaatRuum">
     @for (laud of lauadPrivaatne(); track laud.id) {
     <div class="grid-elem"> {{laud.id}} </div>
     }
+</div>
 </div>
 
 </div>

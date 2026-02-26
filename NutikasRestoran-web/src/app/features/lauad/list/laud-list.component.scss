@@ -1,26 +1,32 @@
-.külgBox {
+h4 {
+  margin-left:5%;
+  margin-bottom: 1%;
+}
+
+.peamised {
   display: flex;
   width: 100%;
+  height: 100%;
 }
 
 .grid-peaSaal {
   display: grid;
-  grid-template-columns: repeat(3, 11.11vh);
-  grid-template-rows: repeat(3, 11.11vh);
+  grid-template-columns: repeat(3, minmax(10px, 8vw));
+  grid-template-rows: repeat(auto-fit, 10px, 8vw);
   padding: 10px;
 }
 
 .grid-terass {
   display: grid;
-  grid-template-columns: repeat(3, 11.11vh);
-  grid-template-rows: repeat(3, 11.11vh);
+  grid-template-columns: repeat(3, minmax(10px, 8vw));
+  grid-template-rows: repeat(auto-fit, minmax(10px, 8vw));
   padding: 10px;
 }
 
 .grid-privaatRuum {
   display: grid;
-  grid-template-columns: repeat(3, 11.11vh);
-  grid-template-rows: repeat(3, 11.11vh);
+  grid-template-columns: repeat(3, minmax(10px, 8vw));
+  grid-template-rows: repeat(auto-fit, minmax(10px, 8vw));
   padding: 10px;
   width: 100%;
   margin-left: auto;
@@ -30,7 +36,7 @@
 .grid-elem {
   background-color: #f1f1f1;
   border: 1px solid black;
-  padding: 10px;
+  padding: 25%;
   font-size: 30px;
   text-align: center;
 }

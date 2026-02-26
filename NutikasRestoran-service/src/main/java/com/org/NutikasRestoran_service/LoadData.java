@@ -36,7 +36,7 @@ public class LoadData {
 
         public void laeLauad(LaudService laudService) { // genereerin laudade andmed
 
-            int peaSaaliLaudu = 9; // siin vali mitu lauda saalis olla võiks
+            int peaSaaliLaudu = 20; // siin vali mitu lauda saalis olla võiks
             int terrassiLaudu = 6; // siin vali mitu lauda terrassil olla võiks
             int privaatseidLaudu = 3; // siin vali mitu lauda privaatsetes ruumides olla võiks
 

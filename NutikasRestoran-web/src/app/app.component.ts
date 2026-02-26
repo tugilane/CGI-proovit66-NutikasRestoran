@@ -1,20 +1,21 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { Router } from '@angular/router';
+import { laudListComponent } from "./features/lauad/list/laud-list.component";
+import { OtsinugPaneelComponent } from './features/otsinguPaneel/paneel/otsinguPaneel.component';
+import { HeaderComponent } from './layout/header.component';
+import { SoovitusPaneelComponent } from './features/soovitusPaneel/paneel/soovitusPaneel.component';
+import { FooterComponent } from './layout/footer.component'
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [
+    HeaderComponent, 
+    FooterComponent,
+    laudListComponent, 
+    OtsinugPaneelComponent, 
+    SoovitusPaneelComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class App {
-  protected readonly title = signal('NutikasRestoran-web');
-
-  constructor(private router: Router) {}
-
-    public goToLauadView(){
-      this.router.navigate(['/'])
-    }
-    
+export class AppComponent {
+  protected readonly title = signal('NutikasRestoran-web');   
 }
