@@ -1,5 +1,4 @@
-import { Timestamp } from "rxjs";
-export interface Küljepaneel {
+export interface OtsinguPaneelOtsing {
     valikPrivaatne: boolean;
     valikAknaKoht: boolean;
     valikLigipääsetavus: boolean;

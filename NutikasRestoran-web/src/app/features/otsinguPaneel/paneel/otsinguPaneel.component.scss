@@ -7,19 +7,34 @@
     flex-direction: column;
 }
 
-#pealkiri{
+#pealkiri {
     text-align: center;
     margin: 0;
     padding-top: 1%;
 }
 
-p {
+#vaheKoolon {
+    margin: 0;
+    padding: 0;
+}
+
+.aeg {
+    display: flex;
+}
+
+.tingimusSuur {
     font-size: 1.2rem;
+    margin-bottom: 5%;
+}
+
+.tingimusVäike {
+    font-size: 1rem;
+    margin-bottom: 10%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #valikudParent {
-    margin-left: auto;
-    margin-right: auto;
     display: flex;
     padding: 15px;
     justify-content:center;
@@ -27,19 +42,27 @@ p {
     align-items: center;
 }
 
-#kellaaeg {
-    margin-left: 30px;
-
+.valikuKonteiner {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
-.checkBox {
-    display: flex;
-    margin-left: 30px
+#paev {
+    width: 60px;
+}
+
+#inimesi {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #submit {
-    width: 10%;
+    width: 15%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2%;
+    margin-top: 2%;
 }

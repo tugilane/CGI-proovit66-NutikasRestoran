@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { laudListComponent } from "./features/lauad/list/laud-list.component";
-import { OtsinugPaneelComponent } from './features/otsinguPaneel/paneel/otsinguPaneel.component';
+import { OtsinguPaneelComponent } from './features/otsinguPaneel/paneel/otsinguPaneel.component';
 import { HeaderComponent } from './layout/header.component';
 import { SoovitusPaneelComponent } from './features/soovitusPaneel/paneel/soovitusPaneel.component';
 import { FooterComponent } from './layout/footer.component'
@@ -11,7 +11,7 @@ import { FooterComponent } from './layout/footer.component'
     HeaderComponent, 
     FooterComponent,
     laudListComponent, 
-    OtsinugPaneelComponent, 
+    OtsinguPaneelComponent, 
     SoovitusPaneelComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
