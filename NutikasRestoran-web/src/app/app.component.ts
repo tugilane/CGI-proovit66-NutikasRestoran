@@ -2,7 +2,7 @@ import { Component, signal } from '@angular/core';
 import { laudListComponent } from "./features/lauad/list/laud-list.component";
 import { OtsinguPaneelComponent } from './features/otsinguPaneel/paneel/otsinguPaneel.component';
 import { HeaderComponent } from './layout/header.component';
-import { SoovitusPaneelComponent } from './features/soovitusPaneel/paneel/soovitusPaneel.component';
+import { SoovitusPaneelComponent } from './features/soovitusPaneel/list/soovitusPaneel-list.component';
 import { FooterComponent } from './layout/footer.component'
 
 @Component({

@@ -18,7 +18,7 @@ public class PaevFactory {
     private final LaudService laudService;
     private final BroneeringService broneeringService;
 
-    public PaevFactory(LaudService laudService, BroneeringService broneeringService) {
+    public PaevFactory(LaudService laudService, BroneeringService broneeringService) { // nimetaga ümber BroneeringFactory tegelt
         this.laudService = laudService;
         this.broneeringService = broneeringService;
     }
@@ -51,7 +51,7 @@ public class PaevFactory {
 
             if (laudKuhuLisanBronni.isPresent()) { // kui laud eksisteerib.
 
-                for (int i = 0; i < 5; i++) {
+                for (int i = 0; i < 6; i++) {
                     loos = getRandomNumber(0, 3); // toimub loos, "kas teeme broneeringu sellele kellajale".
                     if (loos > 0){ // kui loos õnnestub siis teeme broneeringu. tõenäosus et bronnitakse on 2/3
                         Broneering uusBronn = new Broneering(0, paev, laudKuhuLisanBronni.get(), "Kylaline", jooksevAeg);

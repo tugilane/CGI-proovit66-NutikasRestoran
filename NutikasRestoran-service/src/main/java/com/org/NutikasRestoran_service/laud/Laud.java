@@ -1,5 +1,7 @@
 package com.org.NutikasRestoran_service.laud;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.org.NutikasRestoran_service.broneering.Broneering;
 import jakarta.persistence.*;
 import tools.jackson.databind.ObjectMapper;
@@ -17,6 +19,7 @@ public class Laud {
 
     @OneToMany (fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn
+    @JsonManagedReference
     private List<Broneering> bronnitud;
 
     @Column

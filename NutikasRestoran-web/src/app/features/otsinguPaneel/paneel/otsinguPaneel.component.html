@@ -1,108 +1,126 @@
-<div id="paneel">
+<div>
 
-    <h2 id="pealkiri">Täpsusta tingimusi</h2>
+    <div class="paneel">
+        <h2 id="pealkiri">Täpsusta tingimusi</h2>
 
-    <div id="valikudParent">
+        <div class="valikudParent">
 
-        <div class="valikuKonteiner">
-            <p class="tingimusVäike">kuupäev</p>
-            <div class="aeg">
+            <div class="valikuKonteiner">
+                <p class="tingimusVäike">kuupäev</p>
+                <div class="aeg">
 
-                <select #aastaRef [(ngModel)]="aastaLaiv" name="aasta" id="">
-                    <option value="{{ this.aasta0.toString() }}">{{ this.aasta0.toString() }}</option>
-                    @if ( this.kuuTana > 8){
-                    <option value="{{ this.aasta1.toString() }}"> {{ this.aasta1.toString() }} </option>
-                    }
-                </select>
+                    <select #aastaRef [(ngModel)]="aastaLaiv" name="aasta" id="">
+                        <option value="{{ this.aasta0.toString() }}">{{ this.aasta0.toString() }}</option>
+                        @if ( this.kuuTana > 8){
+                        <option value="{{ this.aasta1.toString() }}"> {{ this.aasta1.toString() }} </option>
+                        }
+                    </select>
 
-                <select #kuuRef [(ngModel)]="kuuLaiv" name="kuu" id="">
-                    @for (kuu of misKuusidNaidata(); track kuu){
+                    <select #kuuRef [(ngModel)]="kuuLaiv" name="kuu" id="">
+                        @for (kuu of misKuusidNaidata(); track kuu){
                         <option value="{{ kuu }}">{{ kuu }}</option>
-                    }
+                        }
 
-                </select>
+                    </select>
 
-                <select #paevRef [(ngModel)]="paevLaiv" name="päev" id="">
-                    @for (paev of misPaeviNaidata(); track paev){
+                    <select #paevRef [(ngModel)]="paevLaiv" name="päev" id="">
+                        @for (paev of misPaeviNaidata(); track paev){
                         <option value="{{ paev }}">{{ paev }}</option>
-                    }
+                        }
 
-                </select>
+                    </select>
+                </div>
+
             </div>
 
-        </div>
-
-        <div class="valikuKonteiner">
-            <p class="tingimusVäike">kellaaeg</p>
-            <div class="aeg">
-                <select [(ngModel)]="kellHHLaiv" name="tunnid" id="">
+            <div class="valikuKonteiner">
+                <p class="tingimusVäike">inimeste arv</p>
+                <select [(ngModel)]="inimesteArvLaiv" name="inimesteArv" id="inimesi">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="11">11</option>
                     <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="14">14</option>
-                    <option value="15">15</option>
-                    <option value="16">16</option>
-                    <option value="17">17</option>
-                    <option value="18">18</option>
-                    <option value="19">19</option>
-                    <option value="20">20</option>
-                    <option value="21">21</option>
-                </select>
-                <p id="vaheKoolon">:</p>
-                <select [(ngModel)]="kellMMLaiv" name="minutid" id="">
-                    <option value="00">00</option>
-                    <option value="05">05</option>
-                    <option value="10">10</option>
-                    <option value="15">15</option>
-                    <option value="20">20</option>
-                    <option value="25">25</option>
-                    <option value="30">30</option>
-                    <option value="35">35</option>
-                    <option value="40">40</option>
-                    <option value="45">45</option>
-                    <option value="50">50</option>
-                    <option value="55">55</option>
                 </select>
             </div>
-        </div>
 
-        <div class="valikuKonteiner">
-            <p class="tingimusVäike">inimeste arv</p>
-            <select [(ngModel)]="inimesteArvLaiv" name="inimesteArv" id="inimesi">
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-            </select>
-        </div>
+            <div class="valikuKonteiner">
+                <p class="tingimusVäike">tsoon</p>
+                <select [(ngModel)]="tsoonLaiv" name="tsoon" id="">
+                    <option value="peasaal">peasaal</option>
+                    <option value="terass">terass</option>
+                    <option value="privaatne">privaatne tuba</option>
+                </select>
+            </div>
 
-        <div class="valikuKonteiner">
-            <p class="tingimusVäike">tsoon</p>
-            <select [(ngModel)]="tsoonLaiv" name="tsoon" id="">
-                <option value="peasaal">peasaal</option>
-                <option value="terass">terass</option>
-                <option value="privaatne">privaatne tuba</option>
-            </select>
-        </div>
+            <div class="valikuKonteiner">
+                <p class="tingimusSuur">akna kõrval</p>
+                <input class="checkBox" #akenRef (change)="muudaCheckBox(0)" type="checkbox"
+                    value=" {{ checkBoxes[0] }} ">
+            </div>
+            <div class="valikuKonteiner">
+                <p class="tingimusSuur">hästi ligipääsetav</p>
+                <input class="checkBox" #ligipaasetavusRef (change)="muudaCheckBox(1)" type="checkbox"
+                    value=" {{ checkBoxes[1] }} ">
+            </div>
 
-        <div class="valikuKonteiner">
-            <p class="tingimusSuur">akna kõrval</p>
-            <input class="checkBox" #akenRef (change)="muudaCheckBox(0)" type="checkbox" value=" {{ checkBoxes[0] }} ">
         </div>
-        <div class="valikuKonteiner">
-            <p class="tingimusSuur">hästi ligipääsetav</p>
-            <input class="checkBox" #ligipaasetavusRef (change)="muudaCheckBox(1)" type="checkbox" value=" {{ checkBoxes[1] }} ">
-        </div>
-
     </div>
 
-    <button id="submit"
-        (click)="getValikud(akenRef.value, ligipaasetavusRef.value, aastaRef.value, kuuRef.value, paevRef.value)">Näita valikuid
-    </button>
+    <div class="paneel" id="nupudPaneel">
 
+        <div class="valikudParent">
+
+            <div class="valikuKonteiner">
+                <button id="submitPaev"
+                    (click)="getValikudPaev(akenRef.value, ligipaasetavusRef.value, aastaRef.value, kuuRef.value, paevRef.value)">Näita
+                    kogu päeva
+                </button>
+            </div>
+
+            <div class="valikuKonteiner">
+                <div class="aeg">
+                <button id="submitKell"
+                    (click)="getValikudPaevJaKell(akenRef.value, ligipaasetavusRef.value, aastaRef.value, kuuRef.value, paevRef.value)">Näita
+                    kellaaega
+                </button>
+                <p id="vaheKoolon">-</p>
+                <div class="aeg">
+                    <select [(ngModel)]="kellHHLaiv" name="tunnid" id="">
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                    </select>
+                    <p id="vaheKoolon">:</p>
+                    <select [(ngModel)]="kellMMLaiv" name="minutid" id="">
+                        <option value="00">00</option>
+                        <option value="05">05</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                        <option value="25">25</option>
+                        <option value="30">30</option>
+                        <option value="35">35</option>
+                        <option value="40">40</option>
+                        <option value="45">45</option>
+                        <option value="50">50</option>
+                        <option value="55">55</option>
+                    </select>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
 </div>

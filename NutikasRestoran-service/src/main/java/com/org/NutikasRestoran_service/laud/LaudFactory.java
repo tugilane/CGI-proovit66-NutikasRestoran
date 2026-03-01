@@ -56,7 +56,7 @@ public class LaudFactory {
             else
                 ligipääseatav = true;
 
-            this.laudService.save(new Laud(0, null, false, aknaKoht, ligipääseatav, getRandomNumber(2, 5), "saal"));
+            this.laudService.save(new Laud(0, null, false, aknaKoht, ligipääseatav, getRandomNumber(2, 5), "peasaal"));
         }
     }
 
@@ -104,7 +104,7 @@ public class LaudFactory {
             else
                 aknaKoht = false;
 
-            this.laudService.save(new Laud(0, null, true, aknaKoht, true, getRandomNumber(2, 11), "privaatneRuum"));
+            this.laudService.save(new Laud(0, null, true, aknaKoht, true, getRandomNumber(2, 11), "privaatne"));
         }
     }
 }

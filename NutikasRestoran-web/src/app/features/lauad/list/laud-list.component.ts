@@ -25,13 +25,13 @@ export class laudListComponent implements OnInit{
             
             lauadData.forEach(laudElement => { // algul paneme arrayde sisse 
                 switch(laudElement.tsoon){
-                    case 'saal':
+                    case 'peasaal':
                         saal.push(laudElement)
                     break;
                     case 'terass':
                         terass.push(laudElement)
                     break;
-                    case 'privaatneRuum':
+                    case 'privaatne':
                         privaatneRuum.push(laudElement)
                     break;
                 }

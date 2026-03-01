@@ -126,7 +126,7 @@ export class OtsinguPaneelComponent implements OnInit {
 
         otsing?: Observable<Otsing>;
 
-        getValikud(akenRef: string, ligipääsetavRef: string, aastaRef:string, kuuRef:string, paevRef: string){
+        getValikudPaev(akenRef: string, ligipääsetavRef: string, aastaRef:string, kuuRef:string, paevRef: string){
             
             // teisendame kuunime numbriks.
             let kuuTeisendatud: string; // nt. veebruar -> 02
@@ -152,11 +152,40 @@ export class OtsinguPaneelComponent implements OnInit {
                 valikAeg: aegJava
             }
 
-            this.otsingService.saadaOtsing(otsing)
+            this.otsingService.saadaOtsingPaev(otsing)
+        }
+
+        getValikudPaevJaKell(akenRef: string, ligipääsetavRef: string, aastaRef:string, kuuRef:string, paevRef: string){
+            
+            // teisendame kuunime numbriks.
+            let kuuTeisendatud: string; // nt. veebruar -> 02
+            kuuTeisendatud = (1+this.listKuud.indexOf(kuuRef))+""
+            if (kuuTeisendatud.split("").length == 1){
+                kuuTeisendatud = "0" + kuuTeisendatud;
+            }
+
+            let paevTeisendatud: string = paevRef.split(".")[0]; // peame seda ka parseima veits
+            if (parseInt(paevTeisendatud) < 10){
+                paevTeisendatud = "0" + paevTeisendatud;
+            }
+
+            // Teeme käsitsi parse ja tõlgendame otsingu aja javale sobivasse formaati.
+            let aegJava: string;
+            aegJava = aastaRef+"-"+kuuTeisendatud+"-"+paevTeisendatud+"T"+this.kellHHLaiv+":"+this.kellMMLaiv+":00"
+
+            let otsing: Otsing = {
+                valikAknaKoht: (akenRef =="true"),
+                valikLigipaasetavus: (ligipääsetavRef == "true"),
+                valikInimesteArv: parseInt(this.inimesteArvLaiv),
+                valikTsoon: this.tsoonLaiv,
+                valikAeg: aegJava
+            }
+
+            this.otsingService.saadaOtsingPaevJaKell(otsing)
         }
 
         ngOnInit(): void {
-            this.getValikud("false", "false", this.aastaLaiv, this.kuuLaiv, this.paevLaiv)
+            this.getValikudPaevJaKell("false", "false", this.aastaLaiv, this.kuuLaiv, this.paevLaiv)
         }
 
 }

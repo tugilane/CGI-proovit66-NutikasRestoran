@@ -1,5 +1,7 @@
 package com.org.NutikasRestoran_service.broneering;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.org.NutikasRestoran_service.PaevKalendris.Paev;
 import com.org.NutikasRestoran_service.laud.Laud;
 import jakarta.persistence.*;
@@ -20,6 +22,7 @@ public class Broneering {
 
         @ManyToOne
         @JoinColumn
+        @JsonBackReference
         private Laud laud;
 
         @Column

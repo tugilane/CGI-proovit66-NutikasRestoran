@@ -7,7 +7,7 @@ import com.org.NutikasRestoran_service.laud.Laud;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Otsing {
+public class OtsingDTO {
 
     private boolean valikAknaKoht;
     private boolean valikLigipaasetavus;
@@ -16,17 +16,8 @@ public class Otsing {
     private LocalDateTime valikAeg;
     private List<Laud> responseList;
 
-    // request konstruktor
-    public Otsing(boolean valikAknaKoht, boolean valikLigipaasetavus, long valikInimesteArv, String valikTsoon, LocalDateTime valikAeg) {
-        this.valikAknaKoht = valikAknaKoht;
-        this.valikLigipaasetavus = valikLigipaasetavus;
-        this.valikInimesteArv = valikInimesteArv;
-        this.valikTsoon = valikTsoon;
-        this.valikAeg = valikAeg;
-    };
-
     // response konstruktor
-    public Otsing(boolean valikAknaKoht, boolean valikLigipaasetavus, long valikInimesteArv, String valikTsoon, LocalDateTime valikAeg, List<Laud> responseList) {
+    public OtsingDTO(boolean valikAknaKoht, boolean valikLigipaasetavus, long valikInimesteArv, String valikTsoon, LocalDateTime valikAeg, List<Laud> responseList) {
         this.valikAknaKoht = valikAknaKoht;
         this.valikLigipaasetavus = valikLigipaasetavus;
         this.valikInimesteArv = valikInimesteArv;
@@ -37,7 +28,7 @@ public class Otsing {
 
 
 
-    public Otsing() {};
+    public OtsingDTO() {};
 
     public boolean isValikAknaKoht() {return valikAknaKoht;}
 

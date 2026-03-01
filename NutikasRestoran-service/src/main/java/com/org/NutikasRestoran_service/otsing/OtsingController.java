@@ -14,10 +14,15 @@ public class OtsingController {
             this.otsingService = otsingService;
         }
 
-        @PostMapping("/otsing") // response
-        public ResponseEntity<String> otsingReq(@RequestBody String body) {
-            otsingService.looOtsing(body);
-            return ResponseEntity.ok("Sain kätte otsingu päringu");
+        @PostMapping("/otsing/paevjakell") // response
+        public OtsingDTO otsingReqPaevJaKell(@RequestBody String body) {
+            return otsingService.looOtsingKellaga(body);
+        }
+
+        @PostMapping("/otsing/paev") // response
+        public ResponseEntity<String> otsingReqPaev(@RequestBody String body) {
+        otsingService.looOtsingKoguPaev(body);
+        return ResponseEntity.ok("Sain kätte päeva otsingu päringu");
         }
 
 
