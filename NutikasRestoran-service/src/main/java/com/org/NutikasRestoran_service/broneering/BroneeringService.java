@@ -1,9 +1,7 @@
 package com.org.NutikasRestoran_service.broneering;
 
-import com.org.NutikasRestoran_service.broneering.Broneering;
-import com.org.NutikasRestoran_service.broneering.BroneeringRepository;
 import com.org.NutikasRestoran_service.laud.Laud;
-import com.org.NutikasRestoran_service.laud.LaudService;
+import com.org.NutikasRestoran_service.otsing.Otsing;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +11,12 @@ import java.util.Optional;
 @Service
 public class BroneeringService {
 
+    private final BroneeringRepository broneeringRepository;
 
-    @Autowired
-    private BroneeringRepository broneeringRepository;
+    public BroneeringService(BroneeringRepository broneeringRepository){
+        this.broneeringRepository = broneeringRepository;
+
+    }
 
     public List<Broneering> koikBroneeringud() {
         return broneeringRepository.findAll();
@@ -45,6 +46,5 @@ public class BroneeringService {
         }
         return lauaBroneeringDTOd;
     }
-
 
 }

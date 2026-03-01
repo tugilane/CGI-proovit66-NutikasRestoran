@@ -1,5 +1,6 @@
 package com.org.NutikasRestoran_service.broneering;
 
+import com.org.NutikasRestoran_service.PaevKalendris.Paev;
 import com.org.NutikasRestoran_service.laud.Laud;
 import jakarta.persistence.*;
 
@@ -15,6 +16,10 @@ public class Broneering {
 
         @ManyToOne
         @JoinColumn
+        private Paev paev;
+
+        @ManyToOne
+        @JoinColumn
         private Laud laud;
 
         @Column
@@ -23,8 +28,9 @@ public class Broneering {
         @Column
         private LocalDateTime aeg;
 
-    public Broneering(long id, Laud laud, String nimi, LocalDateTime aeg) {
+    public Broneering(long id, Paev paev, Laud laud, String nimi, LocalDateTime aeg) {
         this.id = id;
+        this.paev = paev;
         this.laud = laud;
         this.nimi = nimi;
         this.aeg = aeg;

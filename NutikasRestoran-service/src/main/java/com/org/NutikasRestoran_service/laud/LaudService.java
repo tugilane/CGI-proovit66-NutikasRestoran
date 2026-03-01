@@ -15,14 +15,13 @@ import java.util.Optional;
 @Service
 public class LaudService {
 
-    private final BroneeringService broneeringService;
+    private BroneeringService broneeringService;
+    private LaudRepository laudRepository;
 
-    LaudService(BroneeringService broneeringService) {
+    public LaudService(LaudRepository laudRepository, BroneeringService broneeringService) {
+        this.laudRepository = laudRepository;
         this.broneeringService = broneeringService;
     }
-
-    @Autowired
-    private LaudRepository laudRepository;
 
     public List<Laud> koikLauad() {
         return laudRepository.findAll();

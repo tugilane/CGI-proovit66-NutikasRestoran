@@ -7,6 +7,7 @@ import java.util.List;
 
 
 public class LaudDTO{
+
     private long id;
     private List<BroneeringDTO> bronnitud;
     private boolean privaatne;
@@ -65,9 +66,7 @@ public class LaudDTO{
         this.ligipääsetavus = ligipääsetavus;
     }
 
-    public long getInimesteArv() {
-        return inimesteArv;
-    }
+    public long getInimesteArv() {return inimesteArv;}
 
     public void setInimesteArv(int inimesteArv) {
         this.inimesteArv = inimesteArv;

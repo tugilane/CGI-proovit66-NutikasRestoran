@@ -12,11 +12,11 @@ public class LaudController {
 
     private final LaudService laudService;
 
-    LaudController(LaudService laudService) {
+    public LaudController(LaudService laudService) {
         this.laudService = laudService;
     }
 
-    @GetMapping("/lauad")
+    @GetMapping("/lauad") // response
     public String getLauadList(){
         String vastus = laudService.looJson(laudService.looKõikLaudDTOd(laudService.koikLauad()));
         System.out.println(vastus);

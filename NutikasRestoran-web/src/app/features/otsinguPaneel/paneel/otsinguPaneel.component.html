@@ -96,15 +96,13 @@
         </div>
         <div class="valikuKonteiner">
             <p class="tingimusSuur">hästi ligipääsetav</p>
-            <input class="checkBox" #ligipaasetavusRef (change)="muudaCheckBox(1)" type="checkbox"
-                value=" {{ checkBoxes[1] }} ">
+            <input class="checkBox" #ligipaasetavusRef (change)="muudaCheckBox(1)" type="checkbox" value=" {{ checkBoxes[1] }} ">
         </div>
 
     </div>
 
     <button id="submit"
-        (click)="getValikud(akenRef.value, ligipaasetavusRef.value, aastaRef.value, kuuRef.value, paevRef.value)">Näita valikuid</button>
-
-
+        (click)="getValikud(akenRef.value, ligipaasetavusRef.value, aastaRef.value, kuuRef.value, paevRef.value)">Näita valikuid
+    </button>
 
 </div>

@@ -1,7 +1,10 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { OtsinguPaneelOtsing } from '../otsinguPaneelOtsing';
+import { Otsing } from '../otsing';
 import { FormsModule } from '@angular/forms';
+import { OtsingService } from '../otsinguPaneel.service';
+import { inject } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
     selector:'otsinguPaneel',
@@ -11,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class OtsinguPaneelComponent implements OnInit {
+
+        otsingService = inject(OtsingService)
 
         listKuud = [
             "jaanuar",
@@ -40,8 +45,6 @@ export class OtsinguPaneelComponent implements OnInit {
         tänaPäev: number = this.täna.getDate();
         paev0: number = this.tänaPäev;
         paevadDisplay: string[] = []; // päevad mille väljastame valikus
-        
-        checkBoxes = [false, false, false] // aken ligipääsetavus, privaatne
 
         aastaLaiv: string = this.aasta0.toString();
         kuuLaiv: string = this.kuu0;
@@ -109,6 +112,9 @@ export class OtsinguPaneelComponent implements OnInit {
         }    
 
 
+        
+        checkBoxes = [false, false] // aken, ligipääsetavus... (lisada veel midagi?)
+
         muudaCheckBox(id: number){
             if (this.checkBoxes[id]) {
                 this.checkBoxes[id] = false;
@@ -118,20 +124,39 @@ export class OtsinguPaneelComponent implements OnInit {
         }
 
 
+        otsing?: Observable<Otsing>;
 
-        getValikud(aken: string, ligipääsetav: string, aasta:string, kuu:string, paev: string){
-            let otsing = {
-                aken: aken,
-                ligipääsetav: ligipääsetav,
-                inimesteArv: this.inimesteArvLaiv,
-                tsoon: this.tsoonLaiv,
-                aeg: aasta+"-"+(1+this.listKuud.indexOf(kuu))+"-"+paev.split(".")[0]+"T"+this.kellHHLaiv+":"+this.kellMMLaiv+":00"
+        getValikud(akenRef: string, ligipääsetavRef: string, aastaRef:string, kuuRef:string, paevRef: string){
+            
+            // teisendame kuunime numbriks.
+            let kuuTeisendatud: string; // nt. veebruar -> 02
+            kuuTeisendatud = (1+this.listKuud.indexOf(kuuRef))+""
+            if (kuuTeisendatud.split("").length == 1){
+                kuuTeisendatud = "0" + kuuTeisendatud;
             }
-            console.log(otsing)
+
+            let paevTeisendatud: string = paevRef.split(".")[0]; // peame seda ka parseima veits
+            if (parseInt(paevTeisendatud) < 10){
+                paevTeisendatud = "0" + paevTeisendatud;
+            }
+
+            // Teeme käsitsi parse ja tõlgendame otsingu aja javale sobivasse formaati.
+            let aegJava: string;
+            aegJava = aastaRef+"-"+kuuTeisendatud+"-"+paevTeisendatud+"T"+this.kellHHLaiv+":"+this.kellMMLaiv+":00"
+
+            let otsing: Otsing = {
+                valikAknaKoht: (akenRef =="true"),
+                valikLigipaasetavus: (ligipääsetavRef == "true"),
+                valikInimesteArv: parseInt(this.inimesteArvLaiv),
+                valikTsoon: this.tsoonLaiv,
+                valikAeg: aegJava
+            }
+
+            this.otsingService.saadaOtsing(otsing)
         }
 
         ngOnInit(): void {
-
+            this.getValikud("false", "false", this.aastaLaiv, this.kuuLaiv, this.paevLaiv)
         }
 
 }
